@@ -168,7 +168,7 @@ def mock_transcription(audio):
 - `requirements_test.txt` - Minimal dependencies for testing (optional)
 - `TESTING_GUIDE.md` - This guide
 
-## 💡 Pro Tips
+## Pro Tips
 
 - **Keep test files** for comparison with real outputs
 - **Use version control** to track test script changes
