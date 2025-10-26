@@ -2,16 +2,16 @@
 
 This guide shows you how to test the Whisper transcription scripts locally without downloading the large AI models.
 
-## 🎯 What This Testing Approach Achieves
+## What This Testing Approach Achieves
 
-- ✅ **Tests script logic** without downloading models (saves GB of data)
-- ✅ **Verifies file operations** (TXT and EAF generation)
-- ✅ **Tests audio processing** pipeline
-- ✅ **Validates XML generation** for ELAN files
-- ✅ **Checks error handling** and edge cases
-- ✅ **Fast execution** (seconds instead of minutes)
+- **Tests script logic** without downloading models (saves GB of data)
+- **Verifies file operations** (TXT and EAF generation)
+- **Tests audio processing** pipeline
+- **Validates XML generation** for ELAN files
+- **Checks error handling** and edge cases
+- **Fast execution** (seconds instead of minutes)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Use Your System Python (Recommended)
 Your PyCharm CE setup already has all the necessary packages installed in Python 3.13:
@@ -25,7 +25,7 @@ source .venv/bin/activate
 python3 test_diarize_whisper_models.py
 ```
 
-## 📋 What Gets Tested
+## What Gets Tested
 
 ### Core Functionality
 - **Audio loading** (with fallback to mock data)
@@ -45,7 +45,7 @@ python3 test_diarize_whisper_models.py
 - **Audio loading failures** (mock data substitution)
 - **Model loading errors** (mocked responses)
 
-## 🔧 How the Mocking Works
+## How the Mocking Works
 
 ### 1. Model Loading
 ```python
@@ -74,7 +74,7 @@ class MockDiarization:
         ]
 ```
 
-## 📁 Expected Output
+## Expected Output
 
 After running the tests, you'll find:
 
@@ -88,7 +88,7 @@ transcripts/
 └── openai_20241220_143022_TEST.eaf
 ```
 
-## 🧪 Testing Different Scenarios
+## Testing Different Scenarios
 
 ### Test with Real Audio File
 1. Place your audio file in the project directory
@@ -105,22 +105,22 @@ transcripts/
 2. Run the test - verify error handling
 3. Check that appropriate error messages appear
 
-## 🔍 What to Look For
+## What to Look For
 
-### ✅ Success Indicators
+### Success Indicators
 - Script runs without errors
 - Output files are created with `_TEST` suffix
 - File sizes are reasonable (not 0 bytes)
 - XML files are well-formed
 - Timestamps are current
 
-### ⚠️ Warning Signs
+### Warning Signs
 - Import errors (missing dependencies)
 - Permission errors (file access issues)
 - Empty output files
 - Malformed XML
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -143,18 +143,18 @@ chmod 755 transcripts/
 Add more verbose logging by modifying the mock functions:
 ```python
 def mock_transcription(audio):
-    print(f"🔍 Mock transcription called with {len(audio)} samples")
+    print(f"Mock transcription called with {len(audio)} samples")
     return {'text': '[DEBUG] Mock result'}
 ```
 
-## 📊 Performance Comparison
+## Performance Comparison
 
 | Test Type | Time | Disk Usage | Network |
 |-----------|------|------------|---------|
 | **Mock Testing** | ~5 seconds | ~1 MB | 0 MB |
 | **Real Models** | 5-15 minutes | 2-8 GB | 2-8 GB |
 
-## 🎯 Next Steps After Testing
+## Next Steps After Testing
 
 1. **Verify script logic** works as expected
 2. **Check file outputs** are correctly formatted
@@ -162,7 +162,7 @@ def mock_transcription(audio):
 4. **Deploy to server** with confidence
 5. **Run full models** on server for actual transcription
 
-## 🔗 Related Files
+## Related Files
 
 - `test_diarize_whisper_models.py` - Test version of diarization script
 - `requirements_test.txt` - Minimal dependencies for testing (optional)
