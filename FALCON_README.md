@@ -2,21 +2,21 @@
 
 This script (`diarize_whisper_models_falcon.py`) uses **Falcon** for speaker diarization first, then applies **Whisper transcription** to each diarized segment individually.
 
-## 🎯 Key Benefits
+## Key Benefits
 
 - **Preserves speaker assignments**: Speaker labels from Falcon are maintained exactly as detected
 - **Preserves segment boundaries**: Transcription boundaries match diarization results
 - **Handles short segments**: Configurable minimum duration to skip problematic segments
 - **Better speaker consistency**: No speaker switching within segments
 
-## 🔄 How It Works
+## How It Works
 
 1. **Falcon Diarization**: Runs first to identify speaker segments with timestamps
 2. **Segment Analysis**: Analyzes segment durations and filters out very short ones
 3. **Whisper Transcription**: Applies transcription to each valid diarized segment
 4. **Output Generation**: Creates both TXT and EAF (ELAN) format outputs
 
-## 📋 Prerequisites
+## Prerequisites
 
 ### 1. Install Dependencies
 ```bash
@@ -39,7 +39,7 @@ AutoModelForSpeechSeq2Seq.from_pretrained('aadel4/kid-whisper-medium-en-myst')
 "
 ```
 
-## 🚀 Usage
+## Usage
 
 ### Basic Usage
 ```bash
@@ -62,13 +62,13 @@ MIN_SEGMENT_DURATION = 0.5
 FALCON_ACCESS_KEY = "your_access_key_here"
 ```
 
-## 📊 Output
+## Output
 
 The script generates:
 - **TXT files**: Human-readable transcripts with timestamps and speaker labels
 - **EAF files**: ELAN annotation format for further analysis
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -82,13 +82,13 @@ Run the test script to verify everything works:
 python test_falcon_integration.py
 ```
 
-## 📈 Performance Tips
+## Performance Tips
 
 - **Segment Duration**: Aim for segments >1 second for best Whisper results
 - **Audio Quality**: Higher quality audio improves both diarization and transcription
 - **Model Caching**: Pre-download models to avoid repeated downloads
 
-## 🔍 Differences from Pyannote Version
+## Differences from Pyannote Version
 
 | Feature | Pyannote Version | Falcon Version |
 |---------|------------------|----------------|
@@ -98,16 +98,16 @@ python test_falcon_integration.py
 | Short Segment Handling | Limited | Configurable filtering |
 | Dependencies | HuggingFace + Pyannote | HuggingFace + Falcon |
 
-## 📝 Example Output
+## Example Output
 
 ```
-🔄 Processing segment 1/4: Speaker 1 [0.00-2.45] (duration: 2.45s)
-    🔊 Speaker 1: Hello, how are you today? I hope you're doing well.
-🔄 Processing segment 2/4: Speaker 2 [2.45-4.12] (duration: 1.67s)
-    🔊 Speaker 2: I'm doing great, thank you for asking.
+Processing segment 1/4: Speaker 1 [0.00-2.45] (duration: 2.45s)
+    Speaker 1: Hello, how are you today? I hope you're doing well.
+Processing segment 2/4: Speaker 2 [2.45-4.12] (duration: 1.67s)
+    Speaker 2: I'm doing great, thank you for asking.
 ```
 
-## 🆘 Support
+## Support
 
 - **Falcon Issues**: Check [Picovoice Documentation](https://picovoice.ai/docs/)
 - **Whisper Issues**: Check [HuggingFace Transformers](https://huggingface.co/docs/transformers/)
